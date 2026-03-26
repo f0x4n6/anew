@@ -1,55 +1,17 @@
 # anew
-Append lines from stdin to a file, but only if they don't already appear in the file.
-Outputs new lines to `stdout` too, making it a bit like a `tee -a` that removes duplicates.
+Append unique lines from stdin to a file.
 
-## Usage Example
-Here, a file called `things.txt` contains a list of numbers. `newthings.txt` contains a second
-list of numbers, some of which appear in `things.txt` and some of which do not. `anew` is used
-to append the latter to `things.txt`.
+[![Go Reference](https://pkg.go.dev/badge/github.com/f0x4n6/anew.svg)](https://pkg.go.dev/github.com/f0x4n6/anew)
+[![Go Report Card](https://goreportcard.com/badge/github.com/f0x4n6/anew?style=flat-square)](https://goreportcard.com/report/github.com/f0x4n6/anew)
+[![Release](https://img.shields.io/github/release/f0x4n6/anew.svg?style=flat-square)](https://github.com/f0x4n6/anew/releases/latest)
 
-```
-▶ cat things.txt
-Zero
-One
-Two
-
-▶ cat newthings.txt
-One
-Two
-Three
-Four
-
-▶ cat newthings.txt | anew things.txt
-Three
-Four
-
-▶ cat things.txt
-Zero
-One
-Two
-Three
-Four
+```console
+go install github.com/f0x4n6/anew@latest
 ```
 
-Note that the new lines added to `things.txt` are also sent to `stdout`, this allows for them to
-be redirected to another file:
-
-```
-▶ cat newthings.txt | anew things.txt > added-lines.txt
-▶ cat added-lines.txt
-Three
-Four
-```
-
-## Flags
-- To view the output in stdout, but not append to the file, use the dry-run option `-d`.
-- To append to the file, but not print anything to stdout, use quiet mode `-q`.
-
-## Install
-You can either install using go:
-
-```
-go install -v github.com/f0x4n6/anew@latest
+## Usage
+```console
+$ STDIN | anew FILE
 ```
 
 ## License
