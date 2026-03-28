@@ -1,4 +1,4 @@
-module github.com/f0x4n6/anew
+module go.foxforensics.dev/anew
 
 go 1.26.0
 
