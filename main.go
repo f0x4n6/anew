@@ -15,7 +15,7 @@ var cache = make(map[uint64]struct{})
 
 func main() {
 	if len(os.Args) == 1 || os.Args[1] == "--help" {
-		_, _ = fmt.Fprintln(os.Stderr, "usage: anew FILE")
+		_, _ = fmt.Fprintln(os.Stderr, "usage: anew file")
 		os.Exit(2)
 	}
 
