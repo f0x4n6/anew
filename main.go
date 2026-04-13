@@ -52,11 +52,12 @@ func main() {
 	sc = bufio.NewScanner(os.Stdin)
 
 	for sc.Scan() {
-		line := sc.Text()
+		val := sc.Text()
+		key := xxh3.HashString(val)
 
-		if _, ok := cache[xxh3.HashString(line)]; !ok {
-			cache[xxh3.HashString(line)] = struct{}{}
-			_, _ = fmt.Fprintf(f, "%s\n", line)
+		if _, ok := cache[key]; !ok {
+			cache[key] = struct{}{}
+			_, _ = fmt.Fprintf(f, "%s\n", val)
 		}
 	}
 
